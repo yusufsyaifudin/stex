@@ -1,13 +1,13 @@
 # Stex
 
-Stex is a python framework based on Flask
+Stex is a python framework based on [Flask](http://flask.pocoo.org/)
 
 
 ## Installation
 To install just using `pip`
 
 ```
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 ## Running application
@@ -30,13 +30,22 @@ Stex support module. All you need is create your own module and import in `/app/
 
 
 ## Commands
-Sometimes we need console interface to communicate with our python application. You can make your own command in `/app/commands/`. Create file `yourcommand.py`, make yourcommand class and extends to Command class.
+Sometimes we need console interface to communicate with our python application. You can make your own command in `/app/commands/`. Create file `yourcommand.py`, `from app import manager` define your function like:
 
-then in `/app/__init__.py` register your command. How?
+```
+from app import manager
 
-First, import using `from app.commands import yourcommand`
 
-Second, `manager.add_command('yourcommand', yourcommand.yourcommandclass)`
+@manager.command
+def hello(name):
+    "Just say hello"
+    print "hello", name
+
+```
+
+then in `/app/console.py` register your command. How?
+
+import using `from app.commands import yourcommand` where `yourcommand` is yourcommad filename
 
 
 ## Templates
