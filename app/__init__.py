@@ -1,8 +1,7 @@
-from flask import Flask, render_template # Import flask and template operators
-from flask.ext.script import Manager, Command # Import flask script
-from flask.ext.sqlalchemy import SQLAlchemy # Import SQLAlchemy
-from flask.ext.migrate import Migrate, MigrateCommand # Import flask migrate
-from app.commands import hellocommand  # Import commands module
+from flask import Flask  # Import flask and template operators
+from flask.ext.script import Manager  # Import flask script
+from flask.ext.sqlalchemy import SQLAlchemy  # Import SQLAlchemy
+from flask.ext.migrate import Migrate, MigrateCommand  # Import flask migrate
 
 
 # Define the WSGI application object
@@ -10,9 +9,6 @@ app = Flask(__name__)
 
 # Configurations
 app.config.from_object('config')
-
-# Define command
-Command = Command()
 
 # Define the database object which is imported
 # by modules and controllers
@@ -28,16 +24,8 @@ manager = Manager(app)
 
 # Register command(s)
 manager.add_command('db', MigrateCommand)
-manager.add_command('hello', hellocommand.hellocommand)
-
-
-
-# Sample HTTP error handling
-@app.errorhandler(404)
-def not_found(error):
-    return render_template('404.html'), 404
+import app.console as command  # Import commands module
 
 
 # Import a module / component using its blueprint handler variable
-import app.modules
-
+import app.modules as modules

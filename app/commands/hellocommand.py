@@ -1,8 +1,7 @@
-from app import Command
+from app import manager
 
 
-class hellocommand(Command):
-	"""docstring for hellocommand"""
-
-	def run(self):
-		print "Hello World!"
+@manager.command
+def hello(name):
+    "Just say hello"
+    print "hello", name
