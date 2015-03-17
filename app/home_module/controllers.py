@@ -11,7 +11,12 @@ mod_home = Blueprint('home', __name__)
 
 @mod_home.route("/", methods=["GET"])
 def hello():
-    page = request.args.get('page')
+    try:
+        page = request.args.get('page')
+        if page is None:
+            page = 1
+    except Exception:
+        page = 1
     user = User.query.paginate(page=int(page), error_out=False).items
     return jsonify(users=[i.serialize for i in user])
 
