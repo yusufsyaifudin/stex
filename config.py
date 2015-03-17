@@ -1,16 +1,11 @@
 # Statement for enabling the development environment
 import os
+from app.database import *
 
 DEBUG = True
 
 # Define the application directory
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-
-# Define the database - we are working with
-# SQLALCHEMY_DATABASE_URI = 'mysql://root:mydb_pwd@localhost:3306/mydb'
-SQLALCHEMY_DATABASE_URI = 'mysql://root@localhost:3306/flask'
-DATABASE_CONNECT_OPTIONS = {}
-SQLALCHEMY_ECHO = True
 
 # Application threads. A common general assumption is
 # using 2 per available processor cores - to handle

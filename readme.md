@@ -22,8 +22,11 @@ Stex using [Flask-Migrate](https://flask-migrate.readthedocs.org/en/latest/) for
 
 
 To run migration
-`python manage.py db upgrade heads`
+`python manage.py db upgrade`
 
+
+## Eloquent database
+Stex using [Active-SQLAlchemy](https://github.com/mardix/active-sqlalchemy) for ORM interface. It makes you to easy communicate with your database. [See docs for usage](/docs/active_sqlalchemy.md)
 
 ## Modules
 Stex support module. All you need is create your own module and import in `/app/modules.py` such as `from app.home_module.controllers import mod_home` and then register it to the blueprint `app.register_blueprint(mod_home)`. Done!
