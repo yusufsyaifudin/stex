@@ -1,5 +1,7 @@
 # Import flask dependencies
 from flask import Blueprint, jsonify
+from flask import request
+from app import db
 from app.home_module.models.user import User
 
 # Define the blueprint: 'home', set its url prefix: app.url/
@@ -9,7 +11,8 @@ mod_home = Blueprint('home', __name__)
 
 @mod_home.route("/", methods=["GET"])
 def hello():
-    user = User.query.all()
+    page = request.args.get('page')
+    user = User.query.paginate(page=int(page), error_out=False).items
     return jsonify(users=[i.serialize for i in user])
 
 
@@ -19,6 +22,9 @@ def searchuser(username):
     return jsonify(search_result=[i.serialize for i in user])
 
 
-@mod_home.route('/add/user')
-def adduser():
-    return 'insert'
+@mod_home.route('/add/user/<username>')
+def adduser(username):
+    user = User(username)
+    db.session.add(user)
+    db.session.commit()
+    return str(user.id)
