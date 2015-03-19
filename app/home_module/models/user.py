@@ -6,6 +6,7 @@ from app import db
 # Define a User model
 class User(db.Model):
     __tablename__ = 'account'
+    __table_args__ = {'mysql_engine': 'InnoDB'}
 
     # User Name
     id = db.Column(db.Integer, primary_key=True)
