@@ -1,7 +1,6 @@
-# Stex
-
 [![Build Status](https://travis-ci.org/yusyaif/stex.svg)](https://travis-ci.org/yusyaif/stex)
 
+# Stex
 Stex is a python framework based on [Flask](http://flask.pocoo.org/)
 
 
