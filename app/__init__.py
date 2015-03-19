@@ -1,3 +1,10 @@
+# | ====================================
+# | Stex
+# | ====================================
+# |
+# | Yusuf Syaifudin <yusuf.syaifudin@gmail.com>
+
+
 from flask import Flask  # Import flask and template operators
 from flask.ext.script import Manager  # Import flask script
 from active_sqlalchemy import SQLAlchemy  # Import SQLAlchemy

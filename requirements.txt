@@ -10,4 +10,5 @@ alembic==0.7.4
 itsdangerous==0.24
 mysql-python==1.2.5
 pymysql==0.6.1
+psycopg2==2.6
 sqlalchemy==0.9.8

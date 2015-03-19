@@ -20,16 +20,23 @@ def hello():
     return jsonify(users=[i.serialize for i in user])
 
 
-@mod_home.route('/search/user/<username>')
-def searchuser(username):
-    user = User.all().filter(User.name.like('%' + username + '%'))
+@mod_home.route('/search/user/<email>')
+def searchuser(email):
+    user = User.all().filter(User.email.like('%' + email + '%'))
     return jsonify(search_result=[i.serialize for i in user])
 
 
-@mod_home.route('/add/user/<username>')
-def adduser(username):
-    user = User.create(name=username, description="hehehe")
-    return str(user.id)
+@mod_home.route('/add/user/<username>/<email>/<password>')
+def adduser(username, email, password):
+    try:
+        user = User.create(
+            name=username,
+            email=email,
+            password=password
+        )
+        return str(user.id)
+    except Exception as e:
+        return str(e)
 
 
 @mod_home.route('/delete/user/<user_id>')
