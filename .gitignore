@@ -1,1 +1,2 @@
-.pyc
+*.pyc
+app/test.db
